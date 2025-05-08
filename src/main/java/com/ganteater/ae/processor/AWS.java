@@ -44,16 +44,16 @@ import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
-public class AWS extends TaskProcessor {
+public class AWS extends BaseProcessor {
 
 	private Node initNode;
 
-	public AWS(TaskProcessor aParent) {
+	public AWS(Processor aParent) {
 		super(aParent);
 	}
 
 	@Override
-	public void init(TaskProcessor aParent, Node action) throws CommandException {
+	public void init(Processor aParent, Node action) throws CommandException {
 		super.init(aParent, action);
 		initNode = action;
 	}
