@@ -48,10 +48,6 @@ public class AWS extends BaseProcessor {
 
 	private Node initNode;
 
-	public AWS(Processor aParent) {
-		super(aParent);
-	}
-
 	@Override
 	public void init(Processor aParent, Node action) throws CommandException {
 		super.init(aParent, action);
