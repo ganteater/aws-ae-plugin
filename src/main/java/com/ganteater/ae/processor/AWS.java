@@ -61,7 +61,7 @@ public class AWS extends BaseProcessor {
 		String name = attr(action, "name");
 		String profile = attr(action, "profile");
 		String regionAttr = attr(action, "region");
-		Region region = (Region) Region.class.getDeclaredField(regionAttr).get(null);
+		Region region = (Region) Region.of(regionAttr);
 
 		Long startTime = Long.parseLong(attr(action, "startTime"));
 		Long endTime = Long.parseLong(attr(action, "endTime"));
@@ -112,7 +112,8 @@ public class AWS extends BaseProcessor {
 		setVariableValue(name, result);
 	}
 
-	@CommandExamples({ "<InvokeLambda name='type:property' lambda='type:string' region='type:string' payload='type:string' />" })
+	@CommandExamples({
+			"<InvokeLambda name='type:property' lambda='type:string' region='type:string' payload='type:string' />" })
 	public void runCommandInvokeLambda(Node action) throws Exception {
 		// https://docs.aws.amazon.com/console/singlesignon/user-portal/aws-accounts/command-line/get-credentials/option2
 
@@ -209,7 +210,8 @@ public class AWS extends BaseProcessor {
 		return value;
 	}
 
-	@CommandExamples({ "<SQSSize name='type:property' queue='type:string' attribute='type:string' region='type:string' profile='type:string'/>" })
+	@CommandExamples({
+			"<SQSSize name='type:property' queue='type:string' attribute='type:string' region='type:string' profile='type:string'/>" })
 	public void runCommandSQSSize(Node action) throws Exception {
 		String name = attr(action, "name");
 		String attribute = attr(action, "attribute");

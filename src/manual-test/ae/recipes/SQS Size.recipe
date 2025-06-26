@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Recipe name="SQS Size">
+	<Var name="queue name" init="mandatory" /> 
+	<Extern class="com.ganteater.ae.processor.AWS" region="EU_WEST_2" profile="$var{!AWS Profile}">
+		<Loop name="iteraction" numbers="2">
+			<Remove name="error" /> 
+			<SQSSize name="sqs_size" queue="$var{queue name}" attribute="ApproximateNumberOfMessages" exception="error" /> 
+			<If name="iteraction" equals="0">
+				<If name="error" startsWith="Profile file contained no credentials for profile">
+					<Task name="Save AWS Credentials" level="debug" /> 
+				</If> 
+			</If> 
+		</Loop> 
+		<CheckValue actual="$var{error}" expected="$var{NULL}" onErrorMsg="AWS call failed." /> 
+		<Out name="sqs_size" /> 
+	</Extern> 
+</Recipe> 

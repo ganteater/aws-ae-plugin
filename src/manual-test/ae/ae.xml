@@ -1,0 +1,23 @@
+<Environment xmlns="http://ganteater.com/xml/configuration"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ganteater.com/xml/configuration https://ganteater.com/xml/configuration/anteater-1.2.1.6.xsd">
+
+	<Configuration name="Base Commands">
+		<Var name="log_file" value="aws-ae" />
+		<Logger rootLogger="DEBUG,LOGFILE,CONSOLE"
+			Threshold="$var{system::log_level,DEBUG}"
+			ConversionPattern="%d{dd.MM.yyyy HH:mm:ss} %-6p %m %n"
+			File="$var{HOME_WORKINGDIR}/logs/$var{log_file}_$var{START_TIME}.log" />
+
+		<Recipes path="https://sourceforge.net/code-snapshots/svn/a/an/anteater/code/anteater-code-r709-trunk-anteater-cli-src-manual-test-ae-recipes-commands.zip" />
+	</Configuration>
+	
+	<Configuration name="AWS Commands">
+		<Var name="log_file" value="aws-ae" />
+		<Logger rootLogger="DEBUG,LOGFILE,CONSOLE" Threshold="$var{system::log_level,DEBUG}"
+			ConversionPattern="%d{dd.MM.yyyy HH:mm:ss} %-6p %m %n"
+			File="$var{HOME_WORKINGDIR}/logs/$var{log_file}_$var{START_TIME}.log" />
+		<Recipes path="recipes" />
+	</Configuration>
+
+</Environment>

@@ -1,0 +1,14 @@
+<Recipe name="Logs Insights">
+	<Var name="Log Group" init="mandatory" /> 
+	<Var name="Start Date" init="mandatory" description="Start Date: yyyy-MM-dd'T'HH:mm:ss.SSSS'Z'" /> 
+	<Var name="End Date" init="mandatory" description="End Date: yyyy-MM-dd'T'HH:mm:ss.SSSS'Z'" /> 
+	<Var name="Query" init="mandatory" type="text">fields @timestamp, @message, @logStream, @log
+| sort @timestamp desc
+| limit 10000</Var> 
+	<Date name="start" source="Start Date" format="ms" sformat="yyyy-MM-dd'T'HH:mm:ss.SSSS'Z'" /> 
+	<Date name="end" source="End Date" format="ms" sformat="yyyy-MM-dd'T'HH:mm:ss.SSSS'Z'" /> 
+	<Extern class="com.ganteater.ae.processor.AWS" profile="default" region="us-east-1">
+		<LogsInsights name="log records" logGroupName="$var{Log Group}" startTime="$var{start}" endTime="$var{end}">$var{query}</LogsInsights> 
+		<Out name="log records" type="~json" /> 
+	</Extern> 
+</Recipe> 
