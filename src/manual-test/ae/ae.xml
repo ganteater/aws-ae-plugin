@@ -1,6 +1,6 @@
 <Environment xmlns="http://ganteater.com/xml/configuration"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://ganteater.com/xml/configuration https://ganteater.com/xml/configuration/anteater-1.2.1.6.xsd">
+	xsi:schemaLocation="http://ganteater.com/xml/configuration https://ganteater.com/xml/configuration/anteater-1.2.3.xsd">
 
 	<Configuration name="Base Commands">
 		<Var name="log_file" value="aws-ae" />
